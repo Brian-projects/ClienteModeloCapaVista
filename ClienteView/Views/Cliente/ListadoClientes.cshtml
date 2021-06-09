@@ -1,0 +1,47 @@
+﻿@model ClienteView.Models.OperationResult<List<ClienteView.Models.ClienteModel>>
+@{
+    ViewBag.Title = "ListadoClientes";
+}
+
+
+<section class="row pt-3">
+    <div class="col-12">
+        <h1 class="bg-light p-3">Listado de Clientes</h1>
+    </div>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-auto p-3">
+                <a class="btn btn-primary" href="/Cliente/CrearCliente">Nuevo Cliente</a>
+            </div>
+            <div class="col-12 table-size overflow-auto">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Cedula</th>
+                            <th class="text-center">Telefono</th>
+                            <th class="text-center">Balance</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var cliente in Model.Data)
+                        {
+                            <tr>
+                                <td class="text-center">@cliente.Nombre @cliente.Apellidos</td>
+                                <td class="text-center">@cliente.Cedula</td>
+                                <td class="text-center">@cliente.Telefono</td>
+                                <td class="text-center">@cliente.Balance</td>
+                                <td class="text-center">
+                                    <a class="btn btn-primary" href="/Cliente/DetalleCliente/@cliente.Id">Ver</a>
+                                    <a class="btn btn-warning">Modificar</a>
+                                    <a class="btn btn-danger">Eliminar</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,57 @@
+﻿@model ClienteView.Models.ClienteModelExtended
+@{
+    ViewBag.Title = "DetalleCliente";
+}
+
+<section class="row justify-content-center">
+    <div class="col-7">
+        <div class="row">
+            <div class="col-6">
+                <span class="font-weight-bolder">Nombre: </span>
+            </div>
+            <div class="col-6">
+                <span >@Model.cliente.Nombre @Model.cliente.Apellidos</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <span class="font-weight-bolder">Cedula: </span>
+            </div>
+            <div class="col-6">
+                <span class="">@Model.cliente.Cedula</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <span class="font-weight-bolder">Fecha Nacimiento: </span>
+            </div>
+            <div class="col-6">
+                <span>@Model.cliente.FechaNacimiento.ToString("dd/MM/yyyy")</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <span class="font-weight-bolder">Telefono: </span>
+            </div>
+            <div class="col-6">
+                <span>@Model.cliente.Telefono</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <span class="font-weight-bolder">Correo: </span>
+            </div>
+            <div class="col-6">
+                <span>@Model.cliente.Correo</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <span class="font-weight-bolder">Balance: </span>
+            </div>
+            <div class="col-6">
+                <span>@Model.cliente.Balance</span>
+            </div>
+        </div>
+    </div>
+</section>
