@@ -28,5 +28,10 @@ namespace ClienteView.Controllers
             
             return View(result.Data);
         }
+
+        public async Task<ActionResult> CrearCliente() 
+        {
+            return View();
+        }
     }
 }
