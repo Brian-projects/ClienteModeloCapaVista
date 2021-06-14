@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ClienteView.Models
 {
-    public class Estatus
+    public class EstatusModel
     {
         public int Id { get; set; }
         public string Descripcion { get; set; }

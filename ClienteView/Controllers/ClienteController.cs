@@ -11,9 +11,13 @@ namespace ClienteView.Controllers
     public class ClienteController : Controller
     {
         private readonly ClienteService clienteService;
+        private readonly TipoClienteServices tipoClienteServices;
+        private readonly EstatusServices estatusServices;
         public ClienteController() 
         {
             clienteService = new ClienteService();
+            tipoClienteServices = new TipoClienteServices();
+            estatusServices = new EstatusServices();
         }
         // GET: Cliente
         public async  Task<ActionResult> ListadoClientes()
@@ -31,6 +35,8 @@ namespace ClienteView.Controllers
 
         public async Task<ActionResult> CrearCliente() 
         {
+            ViewBag.TipoClientes = await tipoClienteServices.GetTipoClientes();
+            ViewBag.Estatus = await estatusServices.GetEstatus();
             return View();
         }
     }
