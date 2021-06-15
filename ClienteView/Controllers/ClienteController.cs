@@ -3,6 +3,7 @@ using ClienteView.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -40,6 +41,13 @@ namespace ClienteView.Controllers
             return View(result.Data);
         }
 
+        [HttpPost]
+        public async Task<ActionResult> EliminarCliente(int Id)
+        {
+            var result = await clienteService.DeleteClient(Id);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
         public async Task<ActionResult> CrearCliente() 
         {
             ViewBag.TipoClientes = await tipoClienteServices.GetTipoClientes();
@@ -59,14 +67,15 @@ namespace ClienteView.Controllers
             var model = await clienteService.GetById(Id);
             ViewBag.TipoClientes = await tipoClienteServices.GetTipoClientes();
             ViewBag.Estatus = await estatusServices.GetEstatus();
+            ViewBag.ErrorMessage = "";
+            ViewBag.Error = false;
             return View(model.Data);
         }
         [HttpPost]
         public async Task<ActionResult> ModificarCliente(ClienteModel cliente)
-        {
-          
-           
-            return View();
+        { 
+            var model = await clienteService.UpdateCliente(cliente);
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -95,7 +95,52 @@ namespace ClienteView.Services
                     Status = (int)HttpStatusCode.BadRequest,
                     Message = e.Message
                 };
+            }
+        }
+        public async Task<OperationResult<ClienteModel>> UpdateCliente(ClienteModel cliente)
+        {
+            HttpResponseMessage response;
+            try
+            {
+                var jsontext = JsonConvert.SerializeObject(cliente);
+                var content = new StringContent(jsontext, Encoding.UTF8, "application/json");
+
+                response = await Http.PutAsync($"{BaseUrl}/api/cliente/{cliente.Id}", content);
+                response.EnsureSuccessStatusCode();
+                OperationResult<ClienteModel> responseBody = JsonConvert.DeserializeObject<OperationResult<ClienteModel>>(await response.Content.ReadAsStringAsync());
+                return responseBody;
+            }
+            catch (Exception e)
+            {
+                return new OperationResult<ClienteModel>()
+                {
+                    Data = null,
+                    Status = (int)HttpStatusCode.BadRequest,
+                    Message = e.Message
+                };
                 throw;
+            }
+        }
+        public async Task<OperationResult<ClienteModelExtended>> DeleteClient(int Id)
+        {
+
+            HttpResponseMessage response;
+
+            try
+            {
+                response = await Http.DeleteAsync($"{BaseUrl}/Api/Cliente/{Id}");
+                response.EnsureSuccessStatusCode();
+                OperationResult<ClienteModelExtended> responseBody = JsonConvert.DeserializeObject<OperationResult<ClienteModelExtended>>(await response.Content.ReadAsStringAsync());
+                return responseBody;
+            }
+            catch (Exception e)
+            {
+                return new OperationResult<ClienteModelExtended>()
+                {
+                    Status = (int)HttpStatusCode.BadRequest,
+                    Message = e.Message,
+                    Data = null
+                };
             }
         }
     }

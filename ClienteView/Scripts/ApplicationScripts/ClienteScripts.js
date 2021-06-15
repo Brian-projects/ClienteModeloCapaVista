@@ -28,7 +28,7 @@ $(document).ready(function () {
                   <td class="text-center">
                      <a class="btn btn-primary" href="/Cliente/DetalleCliente/${cliente.Id}">Ver</a>
                      <a class="btn btn-warning" href="/Cliente/ModificarCliente/${cliente.Id}">Modificar</a>
-                     <a class="btn btn-danger">Eliminar</a>
+                     <button class="delete btn btn-danger" onclick="eliminarCliente(${cliente.Id.toString()})" value="${cliente.Id.toString()}">Eliminar</button>
                  </td>
               </tr>
             `
@@ -51,42 +51,37 @@ function ObtenerCliente() {
     cliente.fechaNacimiento = $('#cliente_FechaNacimiento').val();
     cliente.tipoClienteId = $('#tipoCliente').val();
     cliente.estatusId = $('#estatus').val();
+    
 }
 
 $('#crearCliente').on('click', function (e) {
     e.preventDefault();
-    ObtenerCliente();
-    console.log(cliente);
     $.ajax({
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(cliente),
         dataType: 'json',
-        url: `${baseUrl}/cliente/crearcliente`,
-        success: () => {
-            console.log('success')
-        },
-        complete: () => {
-            location.href = `${baseUrl}/cliente/listadoclientes`
-        }
+        url: `${baseUrl}/cliente/crearcliente`
     })
 })
 
 $('#modificarCliente').on('click', function (e) {
     e.preventDefault();
-    ObtenerCliente();
-    console.log(cliente);
     $.ajax({
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(cliente),
         dataType: 'json',
-        url: `${baseUrl}/cliente/modificarcliente`,
-        success: () => {
-            console.log('success')
-        },
-        complete: () => {
-            location.href = `${baseUrl}/cliente/listadoclientes`
-        }
+        url: `${baseUrl}/cliente/modificarcliente`
     })
 })
+
+function eliminarCliente(Id) {
+    $.ajax({
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({Id}),
+        dataType: 'json',
+        url: `${baseUrl}/cliente/eliminarcliente`
+    })
+}
