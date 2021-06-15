@@ -3,75 +3,80 @@
         ViewBag.Title = "ModificarCliente";
         ICollection<ClienteView.Models.TipoClienteModel> tipoClientes = ViewBag.TipoClientes;
         ICollection<ClienteView.Models.EstatusModel> Estatus = ViewBag.Estatus;
+        var cliente = Model.cliente;
     }
 
     <section class="row justify-content-center align-items-center">
         <div class="col-12 p-3 m-3 bg-light">
-            <h1 class="display-4">Nuevo Cliente</h1>
+            <h1 class="display-4">Modificar Cliente</h1>
         </div>
         <div class="col-12 col-sm-10">
             <form>
+                <div class="form-group d-none">
+                    @Html.LabelFor(x => cliente.Id, new { @class = "form-label" })
+                    @Html.TextBoxFor(x => cliente.Id, new { @class = "form-control" })
+                </div>
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            @Html.LabelFor(x => x.cliente.Nombre, new { @class = "form-label" })
-                            @Html.TextBoxFor(x => x.cliente.Nombre, new { @class = "form-control" })
+                            @Html.LabelFor(x => cliente.Nombre, new { @class = "form-label" })
+                            @Html.TextBoxFor(x => cliente.Nombre, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            @Html.LabelFor(x => x.cliente.Apellidos, new { @class = "form-label" })
-                            @Html.TextBoxFor(x => x.cliente.Apellidos, new { @class = "form-control" })
+                            @Html.LabelFor(x => cliente.Apellidos, new { @class = "form-label" })
+                            @Html.TextBoxFor(x => cliente.Apellidos, new { @class = "form-control" })
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(x => x.cliente.Cedula, new { @class = "form-label" })
-                    @Html.TextBoxFor(x => x.cliente.Cedula, new { @class = "form-control" })
+                    @Html.LabelFor(x => cliente.Cedula, new { @class = "form-label" })
+                    @Html.TextBoxFor(x => cliente.Cedula, new { @class = "form-control" })
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(x => x.cliente.FechaNacimiento, new { @class = "form-label" })
-                    @Html.TextBoxFor(x => x.cliente.FechaNacimiento, new { type = "datetime", @class = "form-control" })
+                    @Html.LabelFor(x => cliente.FechaNacimiento, new { @class = "form-label" })
+                    @Html.TextBoxFor(x => cliente.FechaNacimiento, new { type = "datetime", @class = "form-control" })
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-4">
                         <div class="form-group">
-                            @Html.LabelFor(x => x.cliente.Telefono, new { @class = "form-label" })
-                            @Html.TextBoxFor(x => x.cliente.Telefono, new { @class = "form-control" })
+                            @Html.LabelFor(x => cliente.Telefono, new { @class = "form-label" })
+                            @Html.TextBoxFor(x => cliente.Telefono, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
-                            @Html.LabelFor(x => x.cliente.Correo, new { @class = "form-label" })
-                            @Html.TextBoxFor(x => x.cliente.Correo, new { @class = "form-control" })
+                            @Html.LabelFor(x => cliente.Correo, new { @class = "form-label" })
+                            @Html.TextBoxFor(x => cliente.Correo, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
-                            @Html.LabelFor(x => x.cliente.Direccion, new { @class = "form-label" })
-                            @Html.TextBoxFor(x => x.cliente.Direccion, new { @class = "form-control" })
+                            @Html.LabelFor(x => cliente.Direccion, new { @class = "form-label" })
+                            @Html.TextBoxFor(x => cliente.Direccion, new { @class = "form-control" })
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(x => x.cliente.Balance, new { @class = "form-label" })
-                    @Html.TextBoxFor(x => x.cliente.Balance, new { @class = "form-control" })
+                    @Html.LabelFor(x => cliente.Balance, new { @class = "form-label" })
+                    @Html.TextBoxFor(x => cliente.Balance, new { @class = "form-control" })
                 </div>
                 <div class="row ">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            @Html.LabelFor(x => x.cliente.TipoClienteId, new { @class = "form-label" })
+                            @Html.LabelFor(x => cliente.TipoClienteId, new { @class = "form-label" })
                             <select class="custom-select" id="tipoCliente">
                                 @foreach (var tipo in tipoClientes)
                                 {
 
-                                    if (Model.TipoClienteDescripcion == tipo.Descripcion) 
+                                    if (Model.TipoClienteDescripcion == tipo.Descripcion)
                                     {
-                                      <option selected value="@tipo.Id">@tipo.Descripcion</option>
+                                        <option selected value="@tipo.Id">@tipo.Descripcion</option>
                                     }
-                                    else 
+                                    else
                                     {
-                                      <option value="@tipo.Id">@tipo.Descripcion</option>
+                                        <option value="@tipo.Id">@tipo.Descripcion</option>
                                     }
                                 }
                             </select>
@@ -79,7 +84,7 @@
                     </div>
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            @Html.LabelFor(x => x.cliente.EstatusId, new { @class = "form-label" })
+                            @Html.LabelFor(x => cliente.EstatusId, new { @class = "form-label" })
                             <select class="custom-select" id="estatus">
                                 @foreach (var tipo in Estatus)
                                 {
@@ -98,7 +103,7 @@
                 </div>
                 <div class="row justify-content-end mb-4 mb-md-0" align-items-center>
                     <div class="col-12 col-md-3">
-                        <button id="crearCliente" type="button" class="btn btn-primary btn-lg btn-block">Enviar</button>
+                        <button id="modificarCliente" type="button" class="btn btn-primary btn-lg btn-block">Enviar</button>
                     </div>
                 </div>
             </form>

@@ -60,6 +60,13 @@ namespace ClienteView.Controllers
             ViewBag.TipoClientes = await tipoClienteServices.GetTipoClientes();
             ViewBag.Estatus = await estatusServices.GetEstatus();
             return View(model.Data);
-        } 
-     }
+        }
+        [HttpPost]
+        public async Task<ActionResult> ModificarCliente(ClienteModel cliente)
+        {
+          
+           
+            return View();
+        }
+    }
 }
