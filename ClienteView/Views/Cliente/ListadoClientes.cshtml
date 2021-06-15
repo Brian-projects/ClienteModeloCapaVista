@@ -6,7 +6,7 @@
 
 <section class="row pt-3">
     <div class="col-12">
-        <h1 class="bg-light p-3">Listado de Clientes</h1>
+        <h1 class="display-4 bg-light p-3">Listado de Clientes</h1>
     </div>
     <div class="col-12">
         <div class="row">
@@ -24,21 +24,8 @@
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach (var cliente in Model.Data)
-                        {
-                            <tr>
-                                <td class="text-center">@cliente.Nombre @cliente.Apellidos</td>
-                                <td class="text-center">@cliente.Cedula</td>
-                                <td class="text-center">@cliente.Telefono</td>
-                                <td class="text-center">@cliente.Balance</td>
-                                <td class="text-center">
-                                    <a class="btn btn-primary" href="/Cliente/DetalleCliente/@cliente.Id">Ver</a>
-                                    <a class="btn btn-warning">Modificar</a>
-                                    <a class="btn btn-danger">Eliminar</a>
-                                </td>
-                            </tr>
-                        }
+                    <tbody id="listarClientes" class="overflow-auto">
+                        
                     </tbody>
                 </table>
             </div>

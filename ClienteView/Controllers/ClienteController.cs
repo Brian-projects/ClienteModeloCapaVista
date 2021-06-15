@@ -1,4 +1,5 @@
-﻿using ClienteView.Services;
+﻿using ClienteView.Models;
+using ClienteView.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,16 @@ namespace ClienteView.Controllers
             estatusServices = new EstatusServices();
         }
         // GET: Cliente
-        public async  Task<ActionResult> ListadoClientes()
+        public ActionResult ListadoClientes()
+        {  
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> ListarClientes() 
         {
             var model = await clienteService.Get();
-            return View(model);
+            return Json(model.Data, JsonRequestBehavior.AllowGet);
         }
 
         public async Task<ActionResult> DetalleCliente(int Id) 
@@ -39,5 +46,12 @@ namespace ClienteView.Controllers
             ViewBag.Estatus = await estatusServices.GetEstatus();
             return View();
         }
-    }
+
+        [HttpPost]
+        public async Task<ActionResult> CrearCliente(ClienteModel cliente)
+        {
+            var result = await clienteService.CreateCliente(cliente);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+     }
 }

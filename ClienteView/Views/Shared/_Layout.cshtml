@@ -4,28 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/bootstrap.min.css"/>
+    <link href="~/Content/bootstrap.min.css" />
+    <link href="~/Content/Hamburguer.css" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
     <section class="container-fluid">
         <div class="row ">
-            @*<nav class="col-12 ">
-                <ul class="row justify-content-end align-items-center shadow">
-                    <li class="col-auto d-md-none list-style">
-                        <span class="hamburger hamburger--collapse" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </span>
-                    </li>
-                </ul>
-            </nav>*@
             <section class="col-12">
                 <div class="row">
                     <div class="col-12 col-md-2 shadow">
-                        <ul class="nav justify-content-center vh-100 text-center">
+                        <ul class="nav justify-content-center vh-100 text-center d-none d-md-block">
                             <li class="col-auto">
                                 <a class="navbar-link text-center p-3" href="/Cliente/ListadoClientes">Cliente</a>
                             </li>
@@ -43,6 +34,7 @@
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/ApplicationScripts/ClienteScripts.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
