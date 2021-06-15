@@ -53,5 +53,13 @@ namespace ClienteView.Controllers
             var result = await clienteService.CreateCliente(cliente);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public async Task<ActionResult> ModificarCliente(int Id) 
+        {
+            var model = await clienteService.GetById(Id);
+            ViewBag.TipoClientes = await tipoClienteServices.GetTipoClientes();
+            ViewBag.Estatus = await estatusServices.GetEstatus();
+            return View(model.Data);
+        } 
      }
 }

@@ -298,6 +298,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Cliente\DetalleCliente.cshtml" />
     <Content Include="Views\Cliente\CrearCliente.cshtml" />
+    <Content Include="Views\Cliente\ModificarCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
